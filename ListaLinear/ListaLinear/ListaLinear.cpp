@@ -11,11 +11,10 @@ void inserirElemento();
 void buscarElemento();
 //--------------------------
 
-
-const int MAX = 2;;
+const int MAX = 10;
+;
 int lista[MAX]{};
 int nElementos = 0;
-
 
 int main()
 {
@@ -25,10 +24,12 @@ int main()
 void menu()
 {
 	int op = 0;
-	while (op != 7) {
+	while (op != 6)
+	{
 		system("cls"); // somente no windows
 		cout << "Menu Lista Linear";
-		cout << endl << endl;
+		cout << endl
+			 << endl;
 		cout << "1 - Inicializar Lista \n";
 		cout << "2 - Exibir quantidade de elementos \n";
 		cout << "3 - Exibir elementos \n";
@@ -41,15 +42,20 @@ void menu()
 
 		switch (op)
 		{
-		case 1: inicializar();
+		case 1:
+			inicializar();
 			break;
-		case 2: exibirQuantidadeElementos();
+		case 2:
+			exibirQuantidadeElementos();
 			break;
-		case 3: exibirElementos();
+		case 3:
+			exibirElementos();
 			break;
-		case 4: buscarElemento();
+		case 4:
+			buscarElemento();
 			break;
-		case 5: inserirElemento();
+		case 5:
+			inserirElemento();
 			break;
 		case 6:
 			return;
@@ -65,13 +71,12 @@ void inicializar()
 {
 	nElementos = 0;
 	cout << "Lista inicializada \n";
-
 }
 
-void exibirQuantidadeElementos() {
+void exibirQuantidadeElementos()
+{
 
 	cout << "Quantidade de elementos: " << nElementos << endl;
-
 }
 
 void exibirElementos()
@@ -80,9 +85,11 @@ void exibirElementos()
 	{
 		cout << " A lista esta vazia \n";
 	}
-	else {
+	else
+	{
 		cout << "Elementos: \n";
-		for (int n = 0; n < nElementos; n++) {
+		for (int n = 0; n < nElementos; n++)
+		{
 			cout << lista[n] << endl;
 		}
 	}
@@ -90,18 +97,44 @@ void exibirElementos()
 
 void inserirElemento()
 {
-	if (nElementos < MAX) {
+	if (nElementos < MAX)
+	{
 		cout << "Digite o elemento: ";
 		cin >> lista[nElementos];
 		nElementos++;
 	}
-	else {
-		cout << "Lista cheia";
+	else
+	{
+		cout << "Lista cheia \n";
 	}
-
 }
 
 void buscarElemento()
 {
+	if (nElementos > 0)
+	{
+		int inputNumber;
+		int numberIndex = -1;
+		bool isOnList = false;
+		cout << "Insira o numero para ser verificado:";
+		cin >> inputNumber;
 
+		for (int i = 0; i < size(lista); i++)
+		{
+			if (inputNumber == lista[i])
+			{
+				cout << "O numero " << inputNumber << " esta na lista" << endl;
+				isOnList = true;
+			}
+		}
+
+		if (!isOnList)
+		{
+			cout << "O numero " << inputNumber << " nao esta na lista" << endl;
+		}
+	}
+	else
+	{
+		cout << "A lista nao tem elementos \n";
+	}
 }
