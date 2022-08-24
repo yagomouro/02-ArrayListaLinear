@@ -12,7 +12,6 @@ void buscarElemento();
 //--------------------------
 
 const int MAX = 10;
-;
 int lista[MAX]{};
 int nElementos = 0;
 
@@ -23,8 +22,8 @@ int main()
 
 void menu()
 {
-	int op = 0;
-	while (op != 6)
+	int menuOption = 0;
+	while (menuOption != 6)
 	{
 		system("cls"); // somente no windows
 		cout << "Menu Lista Linear";
@@ -38,9 +37,9 @@ void menu()
 		cout << "6 - Sair \n\n";
 
 		cout << "Opcao: ";
-		cin >> op;
+		cin >> menuOption;
 
-		switch (op)
+		switch (menuOption)
 		{
 		case 1:
 			inicializar();
@@ -58,8 +57,10 @@ void menu()
 			inserirElemento();
 			break;
 		case 6:
+			cout << "Saindo da aplicacao...";
 			return;
 		default:
+			cout << "Insira uma opcao valida! \n";
 			break;
 		}
 
@@ -123,7 +124,8 @@ void buscarElemento()
 		{
 			if (inputNumber == lista[i])
 			{
-				cout << "O numero " << inputNumber << " esta na lista" << endl;
+				numberIndex = i;
+				cout << "O numero " << inputNumber << " esta na lista, na " << (numberIndex + 1) << " posicao" << endl;
 				isOnList = true;
 			}
 		}
