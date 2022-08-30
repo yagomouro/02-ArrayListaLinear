@@ -1,4 +1,3 @@
-
 #include <iostream>
 using namespace std;
 
@@ -8,10 +7,13 @@ void inicializar();
 void exibirQuantidadeElementos();
 void exibirElementos();
 void inserirElemento();
+void excluirElemento();
 void buscarElemento();
+int posicaoElemento(int valor);
 //--------------------------
 
 const int MAX = 10;
+;
 int lista[MAX]{};
 int nElementos = 0;
 
@@ -22,8 +24,8 @@ int main()
 
 void menu()
 {
-	int menuOption = 0;
-	while (menuOption != 6)
+	int op = 0;
+	while (op != 7)
 	{
 		system("cls"); // somente no windows
 		cout << "Menu Lista Linear";
@@ -34,12 +36,13 @@ void menu()
 		cout << "3 - Exibir elementos \n";
 		cout << "4 - Buscar elemento \n";
 		cout << "5 - Inserir elemento \n";
-		cout << "6 - Sair \n\n";
+		cout << "6 - Excluir elemento \n";
+		cout << "7 - Sair \n\n";
 
 		cout << "Opcao: ";
-		cin >> menuOption;
+		cin >> op;
 
-		switch (menuOption)
+		switch (op)
 		{
 		case 1:
 			inicializar();
@@ -57,10 +60,12 @@ void menu()
 			inserirElemento();
 			break;
 		case 6:
-			cout << "Saindo da aplicacao...";
+			excluirElemento();
+			break;
+
+		case 7:
 			return;
 		default:
-			cout << "Insira uma opcao valida! \n";
 			break;
 		}
 
@@ -98,45 +103,90 @@ void exibirElementos()
 
 void inserirElemento()
 {
+	int pos;
+	int valor;
 	if (nElementos < MAX)
 	{
 		cout << "Digite o elemento: ";
-		cin >> lista[nElementos];
-		nElementos++;
+		cin >> valor;
+		pos = posicaoElemento(valor);
+
+		if (pos != -1)
+		{
+			cout << "Elemento ja esta na lista" << endl;
+		}
+		else
+		{
+			lista[nElementos] = valor;
+			nElementos++;
+		}
 	}
 	else
 	{
-		cout << "Lista cheia \n";
+		cout << "Lista cheia";
+	}
+}
+
+void excluirElemento()
+{
+	int pos;
+	int valor;
+	if (nElementos > 0)
+	{
+
+		cout << "Digite o elemento: ";
+		cin >> valor;
+		pos = posicaoElemento(valor);
+
+		if (pos != -1)
+		{
+			int count = pos;
+			for (int i = 0; i < size(lista) - 2; i++)
+			{
+				lista[count] = lista[count + 1];
+				cout << lista[count];
+				count++;
+				// lista[size(lista)] = ;
+			}
+			nElementos--;
+		}
+		else
+		{
+			cout << "Elemento nao esta na lista" << endl;
+		}
+	}
+	else
+	{
+		cout << "Lista vazia";
 	}
 }
 
 void buscarElemento()
 {
-	if (nElementos > 0)
+	int valor;
+	cout << "Digite o elemento que queira buscar: ";
+	cin >> valor;
+	int pos = posicaoElemento(valor);
+
+	if (pos != -1)
 	{
-		int inputNumber;
-		int numberIndex = -1;
-		bool isOnList = false;
-		cout << "Insira o numero para ser verificado:";
-		cin >> inputNumber;
-
-		for (int i = 0; i < size(lista); i++)
-		{
-			if (inputNumber == lista[i])
-			{
-				numberIndex = i;
-				cout << "O numero " << inputNumber << " esta na lista, na " << (numberIndex + 1) << " posicao" << endl;
-				isOnList = true;
-			}
-		}
-
-		if (!isOnList)
-		{
-			cout << "O numero " << inputNumber << " nao esta na lista" << endl;
-		}
+		cout << "O elemento foi encontrado na posicao" << pos << endl;
 	}
 	else
 	{
-		cout << "A lista nao tem elementos \n";
+		cout << "O elemento digitado nao foi encontrado" << endl;
 	}
+}
+
+int posicaoElemento(int busca)
+{
+	int posicao = -1;
+	for (int i = 0; i < nElementos; i++)
+	{
+		if (busca == lista[i])
+		{
+			posicao = i;
+		}
+	}
+	return posicao;
 }
