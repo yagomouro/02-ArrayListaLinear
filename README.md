@@ -13,4 +13,3 @@ Faça um fork deste repositorio e realize as seguintes atividades:
 
 - [ ] Complemente a função **insere** para que ela inclua um elemento na fila (no final).
 - [ ] Implemente a função **remove** que deve exibir e remover o primeiro elemento da fila ou exibir "Fila Vazia" se não houver nenhum elemento.
-
