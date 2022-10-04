@@ -1,34 +1,15 @@
-<<<<<<< HEAD
-# Lista Duplamente Ligada 
+# Pilha
 ---
 
 ## Objetivos
 
-Ao concluir esta atividade você deverá ter compreendido os seguintes conceitos:
-*  operações diversas com uma lista duplamente ligada
-*  
+Ao concluir esta atividade você deverá ter compreendido o seguinte conceito:
+* Estrutura LIFO (Last In / First Out)
 
 
 ## Atividade Proposta
 
-Faça um **fork** deste repositório e realize as seguintes atividades: 
+Faça um fork deste repositorio e realize as seguintes atividades: 
 
-- [ ] Implemente a função excluirUltimoElemento
-- [ ] Implemente a função excluirPrimeiroElemento
-- [ ] Implemente a função exibirReverso
-=======
-# Lista Linear
-
-Faça um fork deste repositorio e implemente a função buscarElemento
-
-**buscarElemento:**
-* Pede para o usuario digitar um numero
-* Busca o numero na lista
-* Se encontrado exibe a posição do numero na lista
-* Se não econtrado exibe "elemento não encontrado" 
-
-Yago Mouro - yago.mouro@fatec.sp.gov.br
-
-
-
->>>>>>> 83486782697673d2ade1eadc342306e4c85d65c2
+- [ ] Complemente a função PUSH para que ela inclua um elemento na pilha.
+- [ ] Implemente a função POP que deve exibir e remover o ultimo elemento da pilha ou exibir "Pilha Vazia" se não houver nenhum elemento.
