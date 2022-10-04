@@ -13,5 +13,3 @@ Faça um fork deste repositorio e realize as seguintes atividades:
 
 - [ ] Complemente a função PUSH para que ela inclua um elemento na pilha.
 - [ ] Implemente a função POP que deve exibir e remover o ultimo elemento da pilha ou exibir "Pilha Vazia" se não houver nenhum elemento.
-
-
