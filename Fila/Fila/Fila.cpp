@@ -2,13 +2,14 @@
 using namespace std;
 
 // definicao de tipo
-struct NO {
+struct NO
+{
 	int valor;
-	NO* prox;
+	NO *prox;
 };
 
-NO* inicio = NULL;
-NO* fim = NULL;
+NO *inicio = NULL;
+NO *fim = NULL;
 
 // headers
 void menu();
@@ -16,7 +17,6 @@ void inicializar();
 void insere();
 void remove();
 //--------------------------
-
 
 int main()
 {
@@ -26,10 +26,12 @@ int main()
 void menu()
 {
 	int op = 0;
-	while (op != 4) {
+	while (op != 4)
+	{
 		system("cls"); // somente no windows
 		cout << "Menu Fila";
-		cout << endl << endl;
+		cout << endl
+			 << endl;
 		cout << "1 - Inicializar Fila \n";
 		cout << "2 - Inserir elemento \n";
 		cout << "3 - Remover elemento  \n";
@@ -40,11 +42,14 @@ void menu()
 
 		switch (op)
 		{
-		case 1: inicializar();
+		case 1:
+			inicializar();
 			break;
-		case 2:insere();
+		case 2:
+			insere();
 			break;
-		case 3: remove();
+		case 3:
+			remove();
 			break;
 		case 4:
 			return;
@@ -59,11 +64,12 @@ void menu()
 void inicializar()
 {
 
-	// se a lista já possuir elementos
+	// se a lista jï¿½ possuir elementos
 	// libera a memoria ocupada
-	NO* aux = inicio;
-	while (aux != NULL) {
-		NO* paraExcluir = aux;
+	NO *aux = inicio;
+	while (aux != NULL)
+	{
+		NO *paraExcluir = aux;
 		aux = aux->prox;
 		free(paraExcluir);
 	}
@@ -71,30 +77,45 @@ void inicializar()
 	inicio = NULL;
 	fim = NULL;
 	cout << "Fila inicializada \n";
-
 }
-
 
 void insere()
 {
 	// aloca memoria dinamicamente para o novo elemento
-	NO* novo = (NO*)malloc(sizeof(NO));
-	if (novo == NULL)
-	{
-		return;
-	}
+	NO *novo = (NO *)malloc(sizeof(NO));
 
-	cout << "Digite o elemento: ";
+	cout << "Digite o elemento: \n";
 	cin >> novo->valor;
+
 	novo->prox = NULL;
 
+	if (inicio == NULL)
+	{
+		inicio = novo;
+		fim = novo;
+	}
+	else
+	{
+		cout << "Ultimo elemento: " << fim->valor << endl;
+		fim->prox = novo;
+		fim = novo;
+	}
 
+	cout << "Novo elemento: " << fim->valor << endl;
 }
 
 void remove()
 {
+	if (inicio != NULL)
+	{
+		cout << inicio->valor << " sera removido" << endl;
 
-
-
+		NO *auxiliar = inicio->prox;
+		free(inicio);
+		inicio = auxiliar;
+	}
+	else
+	{
+		cout << "Fila vazia" << endl;
+	}
 }
-
